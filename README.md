@@ -1,8 +1,6 @@
 # DGOL
 The data and code for the paper [Wang J, Wang X, Li J, et al. Data Generation-based Operator Learning for Solving Partial Differential Equations on Unbounded Domains[J]. arXiv preprint arXiv:2309.02446, 2023.](https://doi.org/10.48550/arXiv.2309.02446) 
 
-## Code
-- 1D wave equation:
 
 ## Cite this work
 If you use this data or code for academic research, you are encouraged to cite the following paper:
