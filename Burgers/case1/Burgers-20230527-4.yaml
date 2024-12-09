@@ -1,0 +1,71 @@
+data:
+  domain:
+    xmin: -2
+    xmax: 2
+    tmin: 0
+    tmax: 1
+  Nx_u: 51  # Resolution of the solution
+  Nx_f: 51
+  Nt_f: 41
+  N_input: 5000
+  type_x: 'hermite'
+  order_x: 1
+  type_t: 'fourier'
+  tol:
+    u0: 0
+    f: 1
+  error_type: 'RL2'
+
+
+model:
+  m1: 51
+  branch1_layers: [51, 100, 100, 100, 100]
+  m2: 225
+  branch2_layers: [225, 225, 225, 225, 100]
+  trunk_layers: [2, 400, 400, 400, 100]
+  act: tanh
+
+train:
+  batch_size: 8192
+  nIter: 100_000
+  save_it: 10_000
+  save_error_it: 1000
+  # milestones: [5000, 10000, 20000, 40000, 60000, 80000]
+  step_size: 1000
+  base_lr: 0.0005
+  scheduler_gamma: 0.95
+  weight_bcs: 1
+  weight_res: 1
+  save_name: Burgers-20230527-4
+  domain:
+    xmin: -2
+    xmax: 2
+    tmin: 0
+    tmax: 1
+  Nx: 101  # Resolution of the solution
+  Nt: 101
+  N_input: 5000  # number of input functions
+  P_ic: 101
+  P_i: 51
+
+
+test:
+  domain:
+    xmin: -2
+    xmax: 2
+    tmin: 0
+    tmax: 1
+  Nx: 101  # Resolution of numerical solution and plot
+  Nt: 101
+  it: 100_000
+  N_test: 100  # number of input samples
+  domain_ref:
+    xmin: -10
+    xmax: 10
+    tmin: 0
+    tmax: 1
+  Nx_ref: 2001
+  Nt_ref: 101
+  noisy_N: 100
+  noise_f: 0.0
+  noise_u0: 0.0

@@ -1,0 +1,76 @@
+data:
+  domain:
+    xmin: -3
+    xmax: 3
+    tmin: 0
+    tmax: 1
+  Nx_u: 51  # Resolution of the solution
+  Nx_f: 101
+  Nt_f: 101
+  N_input: 5000
+  type_x: 'hermite'
+  type_t: 'fourier'
+  order_x: 2
+  tol:
+    u0: 0.5
+    ut0: 1
+    f: 1
+
+
+model:
+  m1: 51
+  branch1_layers: [51, 100, 100, 100, 100]
+  m2: 51
+  branch2_layers: [51, 100, 100, 100, 100]
+  m3: 225
+  branch3_layers: [225, 225, 225, 225, 100]
+  trunk_layers: [2, 400, 400, 400, 400, 100]
+  act: tanh
+
+train:
+  batch_size: 8192
+  nIter: 80_000
+  save_it: 20_000
+  save_error_it: 1000
+  # milestones: [5000, 10000, 20000, 40000, 60000, 80000]
+  step_size: 500
+  base_lr: 0.001
+  scheduler_gamma: 0.96
+  weight_bcs: 1
+  weight_res: 1
+  # save_path: debug
+  save_name: WaveData-20230611-0
+  domain:
+    xmin: -1
+    xmax: 1
+    tmin: 0
+    tmax: 1
+  Nx: 101  # Resolution of the solution
+  Nt: 101
+  N_input: 5000  # number of input functions
+  P_ic: 101
+  P_i: 51
+
+
+test:
+  domain:
+    xmin: -1
+    xmax: 1
+    tmin: 0
+    tmax: 1
+  Nx: 101  # Resolution of numerical solution and plot
+  Nt: 201
+  it: 80_000
+  Q: 100
+  N_test: 100  # number of input samples
+  domain_ref:
+    xmin: -10
+    xmax: 10
+    tmin: 0
+    tmax: 1
+  Nx_ref: 1001
+  Nt_ref: 101
+  noisy_N: 100
+  noise_f: 0.0
+  noise_u0: 0.0
+  noise_ut0: 0.1
