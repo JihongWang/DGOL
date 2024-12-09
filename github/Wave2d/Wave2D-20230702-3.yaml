@@ -1,0 +1,64 @@
+data:
+  domain:
+    xmin: -5
+    xmax: 5
+    tmin: 0
+    tmax: 1
+  Nx_u: 41  # Resolution of the solution
+  Nx_f: 41
+  Nt_f: 41
+  N_input: 2000
+  type_x: 'exp'
+  type_t: 'exp'
+  order_x: 1
+  tol:
+    u0: 0.8
+    ut0: 0.8
+    f: 0.8
+  if_exact_sol: 1
+
+
+model:
+  m1: 100
+  branch1_layers: [100, 200, 200, 200, 200]
+  m2: 1000
+  branch2_layers: [1000, 200, 200, 200, 200]
+  trunk_layers: [3, 200, 200, 200, 200, 200]
+  act: tanh
+
+train:
+  batch_size: 8192
+  nIter: 150_000
+  save_it: 50_000
+  save_error_it: 1000
+  # milestones: [5000, 10000, 20000, 40000, 60000, 80000]
+  step_size: 1000
+  base_lr: 0.0005
+  scheduler_gamma: 0.96
+  weight_bcs: 1
+  weight_res: 1
+  # save_path: debug
+  save_name: Wave2D-20230702-3
+  domain:
+    xmin: -2
+    xmax: 2
+    tmin: 0
+    tmax: 1
+  Nx: 51  # Resolution of the solution
+  Nt: 51
+  N_input: 2000  # number of input functions
+  P_ic: 21
+  P_i: 21
+
+
+test:
+  domain:
+    xmin: -2
+    xmax: 2
+    tmin: 0
+    tmax: 1
+  Nx: 21  # Resolution of numerical solution and plot
+  Nt: 51
+  Nx_plot: 101
+  N_test: 1  # number of input samples
+  it: 150_000
